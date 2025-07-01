@@ -1,15 +1,15 @@
-# Popis dokumentu
+# Document Description
 
-Můj první PBI dokument vytvořený na základě zkušebních dat od aplikace.
-Na prvním grafu vidíme výši výdělku dle kalendářního měsíce, na druhém obrázku si v mapě můžeme zobrazit výši výdělku v konkrétní zemi.
-Na spodním grafu potom vidíme výši prodeje pro jednotlivé produkty. Každý produkt je barevně rozdělen do sloupcových grafů zaznamenávajících firmy, které ho vyrábějí.
-Vlevo si můžeme rozkliknout konkrétní měsíc, který nás zajímá a grafy se přizpůsobí pouze pro zvolené období.
+My first PBI document based on test data from the application.  
+The first chart shows the amount of earnings by calendar month, while the second image displays earnings by country on a map.  
+The bottom chart shows sales amounts for individual products. Each product is color-coded in bar charts representing the companies that manufacture it.  
+On the left, you can select a specific month of interest, and the charts will adjust to show data only for the selected period.
 
-## Použité pomocné tabulky
+## Used Helper Tables
 
 ### Calendar
 
-Vytvořená pomocí:
+Created using:  
 ```DAX
 Calendar = CALENDAR(DATE(2013,01,01), DATE(2014,12,31))
 ```
