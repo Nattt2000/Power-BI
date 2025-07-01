@@ -60,7 +60,7 @@ Created using:
 Test parametru = GENERATESERIES(2005, 2015, 1)
 ```
 
-## Used Main Measures
+## Some of used measures
 ### Average value of investments
 
 Created using:  
@@ -102,14 +102,59 @@ CALCULATE
 ```
 
 ### Restricted sum of investments in current year
-#### Only investments with date lower than MAX date
+#### Only investments with date lower than MAX date, Only if not blank
 
 Created using:  
 ```DAX
-Investice (RT) = 
-CALCULATE
+Investice (RT) 2 = 
+IF
 (
-   [Investice (CY)],
-    'dimDate'[Date] <= MAX('dimDate'[Date])
+   NOT ISBLANK( [Investice (CY)]), 
+    CALCULATE
+    (
+        [Investice (CY)],
+        'dimDate'[Date] <= MAX('dimDate'[Date])
+    ),
+    BLANK()
 )
 ```
+
+### Starting balance of investments
+
+Created using:  
+```DAX
+Investice a počáteční stav = 
+VAR PrvniDenVeVizualu =
+    CALCULATE(
+        MIN('dimDate'[Date]),
+        ALLSELECTED('dimDate')
+    )
+
+VAR InvesticePredPrvnimDnem =
+    CALCULATE(
+        [investice (CY)],
+        REMOVEFILTERS('dimDate'),
+        'dimDate'[Date] < PrvniDenVeVizualu
+    )
+
+VAR ZobrazitPocatecniStav =
+    AND(
+        COUNTROWS('dimDate') = COUNTROWS(ALLSELECTED('dimDate')),
+        ISFILTERED('dimDate'[Počáteční stav])
+    )
+
+VAR Investice =
+    [Investice (CY)]
+
+VAR Vypocet =
+    IF(
+        ZobrazitPocatecniStav,
+        InvesticePredPrvnimDnem,
+        Investice
+    )
+
+RETURN
+    Vypocet
+
+```
+
