@@ -1,6 +1,6 @@
 # Document Description
 
-## Used Helper Tables
+## Used Tables
 
 ### Restricted Calendar
 
@@ -206,4 +206,58 @@ Test1 = GENERATESERIES(2005, 2010, 1)
 Created using:  
 ```DAX
 test2 = GENERATESERIES(2000, 2020, 1)
+```
+
+## Used Main Measures
+### Average value of investments
+
+Created using:  
+```DAX
+a_inv = AVERAGE(Data[Investice])
+```
+
+### Count of rows
+
+Created using:  
+```DAX
+c_rows = COUNTROWS(data)
+```
+
+### Count of clients
+
+Created using:  
+```DAX
+dc_klient = DISTINCTCOUNT('Data'[Klient])
+```
+
+### Sum of investments in current year
+
+Created using:  
+```DAX
+Investice (CY) = SUM(Data[Investice])
+```
+
+### Sum of investments in previous year
+
+Created using:  
+```DAX
+Investice (PY) = 
+CALCULATE
+(
+    [Investice (CY)],
+    SAMEPERIODLASTYEAR('dimDate'[Date])
+)
+```
+
+### Restricted sum of investments in current year
+#### Only investments with date lower than MAX date
+
+Created using:  
+```DAX
+Investice (RT) = 
+CALCULATE
+(
+   [Investice (CY)],
+    'dimDate'[Date] <= MAX('dimDate'[Date])
+)
 ```
