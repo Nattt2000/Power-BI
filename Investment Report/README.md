@@ -1,5 +1,11 @@
 # Document Description
 
+My Power BI project is based on data provided during a course. In this project, I have created various new tables, some of which were generated dynamically using Power BI parameters. These tables include custom date dimensions with specific date ranges and calculated columns to enrich the data model.
+
+Furthermore, I have developed numerous new measures to support advanced analysis. These measures calculate key metrics such as investment averages, cumulative investments over selected periods, and period comparisons (current year vs. previous year). Some measures use time intelligence functions like CALCULATE and SAMEPERIODLASTYEAR, and others filter data dynamically based on slicers or selected parameters.
+
+This approach enhances the flexibility and usability of the report, enabling more insightful and tailored visualizations.
+
 ## Used Tables
 
 ### Restricted Calendar
