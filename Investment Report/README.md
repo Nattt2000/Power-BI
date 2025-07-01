@@ -60,22 +60,6 @@ Created using:
 Test parametru = GENERATESERIES(2005, 2015, 1)
 ```
 
-### Test1
-#### parameter table created using Power BI What-if parameter
-
-Created using:  
-```DAX
-Test1 = GENERATESERIES(2005, 2010, 1)
-```
-
-### Test2
-#### parameter table created using Power BI What-if parameter
-
-Created using:  
-```DAX
-test2 = GENERATESERIES(2000, 2020, 1)
-```
-
 ## Used Main Measures
 ### Average value of investments
 
