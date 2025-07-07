@@ -12,7 +12,7 @@ dimDate = CALENDAR("1/1/2005","31/12/2015")
 ```
 
 ### Test of parameter
-#### parameter table created using if parameter
+#### parameter table with if parameter
 
 Created using:  
 ```DAX
