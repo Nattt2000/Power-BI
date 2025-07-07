@@ -8,14 +8,33 @@ My Power BI project is based on data provided during a course. The report works 
 
 Created using:  
 ```DAX
-dimCalendar = CALENDAR("1/1/2005","31/12/2015")
+dimDate = CALENDAR("1/1/2005","31/12/2015")
 ```
 
-## Example of used measures
-
-### Restricted Calendar
+### Test of parameter
+#### parameter table created using if parameter
 
 Created using:  
 ```DAX
-dimCalendar = CALENDAR("1/1/2005","31/12/2015")
+Test1 = GENERATESERIES(2000, 2020, 1)
+```
+
+
+## Example of used measures
+
+### Restricted sum of investments in current year
+#### Only investments with date lower than MAX date, Only if not blank
+
+Created using:  
+```DAX
+Investice (RT) 2 = IF
+(
+    NOT ISBLANK([investice (CY)]),
+    CALCULATE
+    (
+        [investice (CY)],
+        'dimDate'[Date] <= MAX(dimDate[Date])
+    ),
+    BLANK()
+)
 ```
